@@ -18,7 +18,9 @@ import static tela.Login.usuario;
  * @author Pedro Henrique Gomes
  */
 public class VerificacaoLoginUsuario {
-
+     public static final Integer ADM_SISTEMA = 1;
+    public static final Integer VENDEDOR_SISTEMA = 2;
+    public static final Integer USUARIO_SISTEMA = 3;
     public static Usuario userStatic;
     public static String usuario;
 

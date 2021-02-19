@@ -5,22 +5,13 @@
         <group>
             <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/tela/VendasFrame.java</file>
             <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/tela/Login.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/META-INF/persistence.xml</file>
+            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/QueryesPesonalizadas/QueryesProduto.java</file>
+            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modellosUteis/ValidarJanelas.java</file>
             <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/tela/CadastrarUsuario.java</file>
             <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modelos/Produto.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modelos/Factory.java</file>
             <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modellosUteis/VerificacaoLoginUsuario.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/QueryesPesonalizadas/Querys.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modellosUteis/CriarInternal.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/tela/EcolhaDeCliente.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modelos/Acesso.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modelos/Usuario.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/tela/Modal.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modelos/Cliente.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/jpa/NewClass.java</file>
             <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/tela/Principal.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/modelos/Pedido.java</file>
-            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/QueryesPesonalizadas/QueryesUsuario.java</file>
+            <file>file:/C:/Users/pedro/Downloads/Gerenciador-de-EstoqueGC-main/src/tela/CadastrarProduto.java</file>
         </group>
     </open-files>
 </project-private>

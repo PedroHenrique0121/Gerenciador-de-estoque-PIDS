@@ -10,6 +10,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
 import modelos.Cliente;
+import modelos.Factory;
 import modelos.Produto;
 import modelos.Usuario;
 
@@ -21,9 +22,9 @@ public class Querys {
 
     public void QueryAtualizarEstoque(int id_produto, int quantidade, EntityManager jpa) {
         Produto produto = new Produto();
-        Query queryB = jpa.createQuery("SELECT p FROM Produto p WHERE p.id_produto = '" + id_produto + "' ", Produto.class);
-
-        produto = (Produto) queryB.getSingleResult();
+        // Query queryB = jpa.createQuery("SELECT p FROM Produto p WHERE p.idProduto = '" + id_produto + "' ", Produto.class);
+        produto = jpa.find(Produto.class, id_produto);
+        //(Produto) queryB.getSingleResult();
         int quantidadeCalculada = produto.getEstoque_produto() - quantidade;
         produto.setEstoque_produto(quantidadeCalculada);
         jpa.getTransaction().begin();

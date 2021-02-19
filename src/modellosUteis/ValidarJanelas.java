@@ -16,14 +16,14 @@ import javax.swing.JInternalFrame;
  *
  * @author Pedro Henrique Gomes
  */
-public class CriarInternal {
+public class ValidarJanelas {
     private static JDesktopPane jDesktopPane;
     
-    public   CriarInternal(JDesktopPane jDesktopPane){
-        CriarInternal.jDesktopPane=jDesktopPane;
+    public   ValidarJanelas(JDesktopPane jDesktopPane){
+        ValidarJanelas.jDesktopPane=jDesktopPane;
     }
 
-    public CriarInternal() {
+    public ValidarJanelas() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
             

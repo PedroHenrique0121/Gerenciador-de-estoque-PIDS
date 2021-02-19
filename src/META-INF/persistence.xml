@@ -9,6 +9,7 @@
     <class>modelos.Pedido</class>
     <class>modelos.Produto</class>
     <class>modelos.PedidoProduto</class>
+    <class>modelos.Fornecedor</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/projeto?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

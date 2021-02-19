@@ -17,9 +17,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.RollbackException;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -61,6 +63,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         tableCellRenderer.setBackground(Color.getHSBColor(50, 1, 30));
         tableCellRenderer.setForeground(Color.WHITE);
         jSrcolpaneInterno.getViewport().setBackground(Color.WHITE);
+
+        jTableUsuarios.setRowHeight(28);
+        ImageIcon iconEmp = new ImageIcon("src/images/growthcode.png");
+        iconEmp.setImage(iconEmp.getImage().getScaledInstance(420, 240, 1));
+        jlbImgImp.setIcon(iconEmp);
     }
 
     /**
@@ -87,16 +94,16 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jbtSalvar = new javax.swing.JButton();
         jbtPesquisar = new javax.swing.JButton();
         jcheckAdmin = new javax.swing.JCheckBox();
+        jlbImgImp = new javax.swing.JLabel();
         PanelPesquisar = new javax.swing.JPanel();
         jbtVoltar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jtfPesquisaCodigoUsuario = new javax.swing.JTextField();
         jtfPesquisaPorNomeUsuario = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jSrcolpaneInterno = new javax.swing.JScrollPane();
         jTableUsuarios = new javax.swing.JTable();
+        jbtExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -104,6 +111,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         PanelRoot.setLayout(new java.awt.CardLayout());
 
         PanelSalvar.setPreferredSize(new java.awt.Dimension(920, 590));
+        PanelSalvar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelSalvar.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1041, 48));
 
         jtfNomeUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jtfNomeUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -111,12 +120,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jtfNomeUsuarioKeyPressed(evt);
             }
         });
+        PanelSalvar.add(jtfNomeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 91, 347, -1));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel1.setText("Nome do usuario: ");
+        PanelSalvar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 59, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel2.setText("Login do usuario:");
+        PanelSalvar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 59, -1, -1));
 
         jtfLoginUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jtfLoginUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -124,14 +136,18 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jtfLoginUsuarioKeyPressed(evt);
             }
         });
+        PanelSalvar.add(jtfLoginUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 91, 420, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel3.setText("Inserir uma senha: ");
+        PanelSalvar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 133, -1, -1));
 
         jtfSenha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        PanelSalvar.add(jtfSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 164, 350, -1));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel4.setText("Permissões : ");
+        PanelSalvar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         jcheckUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jcheckUsuario.setText(" 3- Usuario ");
@@ -140,6 +156,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jcheckUsuarioActionPerformed(evt);
             }
         });
+        PanelSalvar.add(jcheckUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
         jcheckVendedor.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jcheckVendedor.setText(" 2- Vendedor");
@@ -148,6 +165,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jcheckVendedorActionPerformed(evt);
             }
         });
+        PanelSalvar.add(jcheckVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
 
         jbtSalvar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jbtSalvar.setText("Salvar");
@@ -156,6 +174,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jbtSalvarActionPerformed(evt);
             }
         });
+        PanelSalvar.add(jbtSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 134, -1));
 
         jbtPesquisar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jbtPesquisar.setText("Pesquisar");
@@ -164,6 +183,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jbtPesquisarActionPerformed(evt);
             }
         });
+        PanelSalvar.add(jbtPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 440, 167, -1));
 
         jcheckAdmin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jcheckAdmin.setText(" 1- Admin");
@@ -172,77 +192,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 jcheckAdminActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout PanelSalvarLayout = new javax.swing.GroupLayout(PanelSalvar);
-        PanelSalvar.setLayout(PanelSalvarLayout);
-        PanelSalvarLayout.setHorizontalGroup(
-            PanelSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1041, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addGap(240, 240, 240)
-                .addComponent(jLabel2))
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jtfNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jtfLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel3))
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel4))
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addGap(430, 430, 430)
-                .addComponent(jcheckAdmin))
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addGap(430, 430, 430)
-                .addComponent(jcheckVendedor))
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addGap(430, 430, 430)
-                .addComponent(jcheckUsuario))
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jbtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(509, 509, 509)
-                .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        PanelSalvarLayout.setVerticalGroup(
-            PanelSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSalvarLayout.createSequentialGroup()
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(PanelSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(7, 7, 7)
-                .addGroup(PanelSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel3)
-                .addGroup(PanelSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelSalvarLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelSalvarLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel4)))
-                .addGap(35, 35, 35)
-                .addComponent(jcheckAdmin)
-                .addGap(7, 7, 7)
-                .addComponent(jcheckVendedor)
-                .addGap(7, 7, 7)
-                .addComponent(jcheckUsuario)
-                .addGap(97, 97, 97)
-                .addGroup(PanelSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtSalvar)
-                    .addComponent(jbtPesquisar)))
-        );
+        PanelSalvar.add(jcheckAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        PanelSalvar.add(jlbImgImp, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 168, 420, 240));
 
         PanelRoot.add(PanelSalvar, "SalvarUsuario");
 
@@ -254,18 +205,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel5.setText("Codigo do Produto: ");
-
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel6.setText("Pesquisa por descrição:");
-
-        jtfPesquisaCodigoUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jtfPesquisaCodigoUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jtfPesquisaCodigoUsuarioFocusGained(evt);
-            }
-        });
+        jLabel6.setText("Pesquisa por nome de  usuario:");
 
         jtfPesquisaPorNomeUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jtfPesquisaPorNomeUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -282,7 +223,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         jSrcolpaneInterno.setBackground(new java.awt.Color(102, 102, 255));
-        jSrcolpaneInterno.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 15)); // NOI18N
+        jSrcolpaneInterno.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
 
         jTableUsuarios.setAutoCreateRowSorter(true);
         jTableUsuarios.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 15)); // NOI18N
@@ -302,12 +243,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableUsuarios.setCellSelectionEnabled(true);
         jTableUsuarios.setDoubleBuffered(true);
+        jTableUsuarios.setDragEnabled(true);
         jTableUsuarios.setFillsViewportHeight(true);
         jTableUsuarios.setFocusCycleRoot(true);
         jTableUsuarios.setFocusTraversalPolicyProvider(true);
         jTableUsuarios.setGridColor(new java.awt.Color(0, 51, 255));
+        jTableUsuarios.setInheritsPopupMenu(true);
         jTableUsuarios.setSurrendersFocusOnKeystroke(true);
         jTableUsuarios.getTableHeader().setReorderingAllowed(false);
         jTableUsuarios.addHierarchyListener(new java.awt.event.HierarchyListener() {
@@ -357,46 +299,47 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel1);
 
+        jbtExcluir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jbtExcluir.setText("Excluir");
+        jbtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelPesquisarLayout = new javax.swing.GroupLayout(PanelPesquisar);
         PanelPesquisar.setLayout(PanelPesquisarLayout);
         PanelPesquisarLayout.setHorizontalGroup(
             PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPesquisarLayout.createSequentialGroup()
-                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(PanelPesquisarLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelPesquisarLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelPesquisarLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPesquisarLayout.createSequentialGroup()
+                        .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtfPesquisaPorNomeUsuario, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelPesquisarLayout.createSequentialGroup()
-                                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtfPesquisaCodigoUsuario))
-                                .addGap(36, 36, 36)
-                                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelPesquisarLayout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jtfPesquisaPorNomeUsuario))))))
-                .addGap(75, 75, 75))
+                                .addComponent(jbtExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 502, Short.MAX_VALUE)
+                                .addComponent(jbtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE))
+                        .addGap(75, 75, 75))))
         );
         PanelPesquisarLayout.setVerticalGroup(
             PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPesquisarLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfPesquisaCodigoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPesquisaPorNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtfPesquisaPorNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jbtVoltar)
+                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtVoltar)
+                    .addComponent(jbtExcluir))
                 .addGap(134, 134, 134))
         );
 
@@ -500,8 +443,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
             DefaultTableModel dtm = (DefaultTableModel) jTableUsuarios.getModel();
             for (int i = jTableUsuarios.getRowCount() - 1; i >= 0; i--) {
-            dtm.removeRow(i);
-        }
+                dtm.removeRow(i);
+            }
             for (int i = 0; i < lista.size(); i++) {
                 dtm.addRow(new Object[]{
                     lista.get(i).getId(),
@@ -521,7 +464,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableUsuariosKeyPressed
 
     private void jTableUsuariosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableUsuariosFocusLost
-        
+
     }//GEN-LAST:event_jTableUsuariosFocusLost
 
     private void jTableUsuariosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTableUsuariosFocusGained
@@ -538,22 +481,47 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             int linha = jTableUsuarios.getSelectedRow();
             int coluna = jTableUsuarios.getSelectedColumn();
             editarUsuario(linha, coluna);
-            
+
         }
 
     }//GEN-LAST:event_jTableUsuariosKeyReleased
 
     private void jtfPesquisaPorNomeUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesquisaPorNomeUsuarioFocusGained
-        if(jTableUsuarios.isEditing()){
-             jTableUsuarios.getCellEditor().stopCellEditing();
-         }
+        if (jTableUsuarios.isEditing()) {
+            jTableUsuarios.getCellEditor().stopCellEditing();
+        }
     }//GEN-LAST:event_jtfPesquisaPorNomeUsuarioFocusGained
 
-    private void jtfPesquisaCodigoUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesquisaCodigoUsuarioFocusGained
-         if(jTableUsuarios.isEditing()){
-             jTableUsuarios.getCellEditor().stopCellEditing();
-         }
-    }//GEN-LAST:event_jtfPesquisaCodigoUsuarioFocusGained
+    private void jbtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtExcluirActionPerformed
+        try {
+
+            int linha = jTableUsuarios.getSelectedRow();
+
+            int id = Integer.parseInt(jTableUsuarios.getValueAt(linha, 0).toString());
+
+            Usuario u = new Usuario();
+            u = em.find(Usuario.class, id);
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente Excluir usuario?", "JAnela de confirmação", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                em.getTransaction().begin();
+                em.remove(u);
+                em.getTransaction().commit();
+                JOptionPane.showMessageDialog(null, "Usuario Excluido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                zerarLinhasdaTebela();
+                jtfPesquisaPorNomeUsuario.grabFocus();
+                jtfPesquisaPorNomeUsuario.setText("");
+            }
+            if (resposta == JOptionPane.NO_OPTION) {
+                jtfPesquisaPorNomeUsuario.grabFocus();
+                jtfPesquisaPorNomeUsuario.selectAll();
+            }
+
+        } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Nenhum usuario selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
+            jtfPesquisaPorNomeUsuario.grabFocus();
+            jtfPesquisaPorNomeUsuario.selectAll();
+        }
+    }//GEN-LAST:event_jbtExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -580,6 +548,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -634,13 +603,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
             } else {
                 try {
-
+                    
                     String valor = String.valueOf(nova.get(0).getText().charAt(1));
-                    JOptionPane.showMessageDialog(null, valor);
                     nova = nova = new ArrayList<JCheckBox>();
                     acesso = em.find(Acesso.class, Integer.parseInt(valor));
                     usuario.setAcesso(acesso);
-                    JOptionPane.showMessageDialog(null, usuario.getAcesso().getTipo());
 
                     em.getTransaction().begin();
                     em.persist(usuario);
@@ -668,6 +635,19 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
     }
 
+    public void prencherPorId(Usuario us) {
+        us = em.find(Usuario.class, us.getId());
+        DefaultTableModel dtm = (DefaultTableModel) jTableUsuarios.getModel();
+        dtm.setNumRows(0);
+        dtm.addRow(new Object[]{
+            us.getId(),
+            us.getNome(),
+            us.getUser(),
+            us.getSenha(),
+            us.getAcesso().getId()
+        });
+    }
+
     public List<Usuario> pesquisaPorNome(String nome) {
         QueryesUsuario qu = new QueryesUsuario();
         return qu.retornaUsuariosPorNome(nome);
@@ -676,33 +656,44 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     public void editarUsuario(int linha, int coluna) {
 
         String conteudo = jTableUsuarios.getValueAt(linha, coluna) + "";
-        Usuario  usuario = new Usuario();
-            usuario.setId(Integer.parseInt(jTableUsuarios.getValueAt(linha,0).toString()));
-            usuario.setNome(jTableUsuarios.getValueAt(linha,1).toString());
-            usuario.setUser(jTableUsuarios.getValueAt(linha,2).toString());
-            usuario.setSenha(jTableUsuarios.getValueAt(linha,3).toString());
-            Acesso a = new Acesso();
-            a.setId(Integer.parseInt(jTableUsuarios.getValueAt(linha,4).toString()));
-            usuario.setAcesso(a);
-        try{
-            
-          int resposta = JOptionPane.showConfirmDialog(null,"Deseja realmente alterar este usuario?","Janela de Confimação", JOptionPane.YES_NO_OPTION);
-          if(resposta== JOptionPane.YES_NO_OPTION){
-              
-          }if(resposta== JOptionPane.YES_OPTION){
-              em.getTransaction().begin();
-         em.merge(usuario);
-         em.getTransaction().commit();
-         JOptionPane.showMessageDialog(null,"Usuario Editado com Sucesso!","Alerta",JOptionPane.INFORMATION_MESSAGE);
-         jtfPesquisaPorNomeUsuario.grabFocus();
-          }
-          
-        }catch(RollbackException e){
-             JOptionPane.showMessageDialog(null,"Houve um erro na tentativa de edição!");
-             jtfPesquisaPorNomeUsuario.grabFocus();
+        Usuario usuario = new Usuario();
+        usuario.setId(Integer.parseInt(jTableUsuarios.getValueAt(linha, 0).toString()));
+        usuario.setNome(jTableUsuarios.getValueAt(linha, 1).toString());
+        usuario.setUser(jTableUsuarios.getValueAt(linha, 2).toString());
+        usuario.setSenha(jTableUsuarios.getValueAt(linha, 3).toString());
+        Acesso a = new Acesso();
+        a.setId(Integer.parseInt(jTableUsuarios.getValueAt(linha, 4).toString()));
+        usuario.setAcesso(a);
+
+        try {
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este usuario?", "Janela de Confimação", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.NO_OPTION) {
+                prencherPorId(usuario);
+                jtfPesquisaPorNomeUsuario.grabFocus();
+                jtfPesquisaPorNomeUsuario.selectAll();
+            }
+            if (resposta == JOptionPane.YES_OPTION) {
+                em.getTransaction().begin();
+                em.merge(usuario);
+                em.getTransaction().commit();
+
+                JOptionPane.showMessageDialog(null, "Usuario Editado com Sucesso!", "Alerta", JOptionPane.INFORMATION_MESSAGE);
+                prencherPorId(usuario);
+                jtfPesquisaPorNomeUsuario.grabFocus();
+                jtfPesquisaPorNomeUsuario.selectAll();
+            }
+
+        } catch (RollbackException e) {
+            JOptionPane.showMessageDialog(null, "Houve um erro na tentativa de edição!");
+            jtfPesquisaPorNomeUsuario.grabFocus();
         }
     }
-    
+
+    public void zerarLinhasdaTebela() {
+        DefaultTableModel dtm = (DefaultTableModel) jTableUsuarios.getModel();
+        dtm.setNumRows(0);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelPesquisar;
     private javax.swing.JPanel PanelRoot;
@@ -711,22 +702,22 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JScrollPane jSrcolpaneInterno;
     private javax.swing.JTable jTableUsuarios;
+    private javax.swing.JButton jbtExcluir;
     private javax.swing.JButton jbtPesquisar;
     private javax.swing.JButton jbtSalvar;
     private javax.swing.JButton jbtVoltar;
     private javax.swing.JCheckBox jcheckAdmin;
     private javax.swing.JCheckBox jcheckUsuario;
     private javax.swing.JCheckBox jcheckVendedor;
+    private javax.swing.JLabel jlbImgImp;
     private javax.swing.JTextField jtfLoginUsuario;
     private javax.swing.JTextField jtfNomeUsuario;
-    private javax.swing.JTextField jtfPesquisaCodigoUsuario;
     private javax.swing.JTextField jtfPesquisaPorNomeUsuario;
     private javax.swing.JTextField jtfSenha;
     // End of variables declaration//GEN-END:variables
