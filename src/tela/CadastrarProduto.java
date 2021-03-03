@@ -94,48 +94,8 @@ public class CadastrarProduto extends javax.swing.JFrame {
         }else{
             bloquearItens(false);
         }
-        jtfValorVendaProduto.setFormatterFactory(new JFormattedTextField.AbstractFormatterFactory() {
-            @Override
-            public JFormattedTextField.AbstractFormatter getFormatter(JFormattedTextField tf) {
-               DecimalFormat format = new DecimalFormat();
-                  NumberFormatter formatter = new NumberFormatter(format);
-                try{
-               
-                format.setMinimumFractionDigits(2);
-                format.setMaximumFractionDigits(2);
-                format.setRoundingMode(RoundingMode.UNNECESSARY);
-               
-                formatter.setAllowsInvalid(false);
-                formatter.setMaximum(0.00);
-                formatter.setMaximum(999999999.99);
-               
-                }catch(ArithmeticException e){
-                    
-                }
-                 return formatter;
-            }
-        });
-        jtfValorCustoProduto.setFormatterFactory(new JFormattedTextField.AbstractFormatterFactory() {
-            @Override
-            public JFormattedTextField.AbstractFormatter getFormatter(JFormattedTextField tf) {
-                 DecimalFormat format = new DecimalFormat();
-                  NumberFormatter formatter = new NumberFormatter(format);
-                try{
-               
-                format.setMinimumFractionDigits(2);
-                format.setMaximumFractionDigits(2);
-                format.setRoundingMode(RoundingMode.UNNECESSARY);
-               
-                formatter.setAllowsInvalid(false);
-                formatter.setMaximum(0.00);
-                formatter.setMaximum(999999999.99);
-               
-                }catch(ArithmeticException e){
-                    
-                }
-                 return formatter;
-            }
-        });
+        formatarPrecos(jtfValorCustoProduto);
+        formatarPrecos(jtfValorVendaProduto);
        
     }
 
@@ -1005,11 +965,12 @@ public class CadastrarProduto extends javax.swing.JFrame {
                 em.getTransaction().begin();
                 em.persist(produto);
                 em.getTransaction().commit();
+                 limparCampos();
                 JOptionPane.showMessageDialog(null, "Produto Criado com Sucesso!", "alerta", JOptionPane.INFORMATION_MESSAGE);
                 em.clear();
 
                 jtfDescriçãoProduto.grabFocus();
-                limparCampos();
+               
                 produto = new Produto();
 
             } catch (RollbackException e) {
@@ -1020,9 +981,11 @@ public class CadastrarProduto extends javax.swing.JFrame {
     }
 
     public void limparCampos() {
-        jtfValorVendaProduto.setText("");
+        //formatarPrecos(jtfValorCustoProduto);
+        //formatarPrecos(jtfValorVendaProduto);
+        jtfValorVendaProduto.setValue(null);
+        jtfValorCustoProduto.setValue(null);
         jtfDescriçãoProduto.setText("");
-        jtfValorCustoProduto.setText("");
         jtfQuantidadeEmEstoque.setText("");
         jtfCodigoFornecedor.setText("");
     }
@@ -1040,7 +1003,30 @@ public class CadastrarProduto extends javax.swing.JFrame {
             produto.getFornecedor().getId()
         });
     }
-
+    public void formatarPrecos(JFormattedTextField j){
+         j.setFormatterFactory(new JFormattedTextField.AbstractFormatterFactory() {
+            @Override
+            public JFormattedTextField.AbstractFormatter getFormatter(JFormattedTextField tf) {
+                 DecimalFormat format = new DecimalFormat();
+                  NumberFormatter formatter = new NumberFormatter(format);
+                try{
+               
+                format.setMinimumFractionDigits(2);
+                format.setMaximumFractionDigits(2);
+                format.setRoundingMode(RoundingMode.UNNECESSARY);
+               
+                formatter.setAllowsInvalid(false);
+                formatter.setMinimum(0.00);
+                formatter.setMaximum(999999999.99);
+              
+              
+                }catch(ArithmeticException e){
+                    
+                }
+                 return formatter;
+            }
+        });
+    }
     public List<Usuario> pesquisaPorNome(String nome) {
         QueryesUsuario qu = new QueryesUsuario();
         return qu.retornaUsuariosPorNome(nome);
@@ -1090,7 +1076,9 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
     public List<Fornecedor> pesquisaPorNomeForncedor(String nome) {
         QueryesFornecedor qf = new QueryesFornecedor();
+        
         return qf.retornaForncedorPorNome(nome);
+         
     }
 
     public List<Produto> pesquisaPorNomeProduto(String nome) {

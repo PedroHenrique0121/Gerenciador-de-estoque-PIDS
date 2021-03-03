@@ -19,6 +19,7 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,13 @@ import modelos.Conexao;
 import modelos.Factory;
 import modelos.Pagamento;
 import modelos.PedidoProduto;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.xml.JasperPrintFactory;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -89,7 +97,7 @@ public class VendasFrame extends javax.swing.JFrame {
         imagemp.setImage(iconEmp.getImage().getScaledInstance(337, 200, 1));
 
         lblImagemLogo.setIcon(iconEmp);
-        lblImagemPagamento.setIcon(imagemp);
+//        lblImagemPagamento.setIcon(imagemp);
        
         DefaultListCellRenderer renderer = (DefaultListCellRenderer) jListaPagamentos.getCellRenderer();
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -107,6 +115,7 @@ public class VendasFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("jpaPU").createEntityManager();
         jtfAreaDeVendaProdutoCodigo1 = new javax.swing.JTextField();
@@ -128,21 +137,27 @@ public class VendasFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         root = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         painelCliente = new javax.swing.JPanel();
         jtfCpfCliente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         lblImagemLogo = new javax.swing.JLabel();
         jtfCodigoProduto = new javax.swing.JTextField();
         menu = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListaPagamentos = new javax.swing.JList<>();
-        lblImagemLogo1 = new javax.swing.JLabel();
-        lblImagemLogo2 = new javax.swing.JLabel();
-        lblImagemPagamento = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         finalizar = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         itmMostrarMenu = new javax.swing.JMenuItem();
@@ -150,10 +165,10 @@ public class VendasFrame extends javax.swing.JFrame {
         itmAdicionarItem = new javax.swing.JMenuItem();
         itmEditar = new javax.swing.JMenuItem();
         itmExcluir = new javax.swing.JMenuItem();
-        itmCancelarVenda = new javax.swing.JMenuItem();
         itmFinalizarVenda = new javax.swing.JMenuItem();
         jtmSelecionarCliente = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jtfAreaDeVendaProdutoCodigo1.setBackground(new java.awt.Color(255, 255, 102));
         jtfAreaDeVendaProdutoCodigo1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
@@ -313,6 +328,52 @@ public class VendasFrame extends javax.swing.JFrame {
 
         root.setLayout(new java.awt.CardLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 1130, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 87, Short.MAX_VALUE)
+        );
+
+        root.add(jPanel2, "inicio");
+
+        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel3.setFocusTraversalPolicyProvider(true);
+
+        jTextField4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel7.setText("Desconto: ");
+
+        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 291, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(731, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .add(22, 22, 22)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel7))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        root.add(jPanel3, "desconto");
+
         painelCliente.setBackground(new java.awt.Color(255, 0, 0));
 
         jtfCpfCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 15)); // NOI18N
@@ -337,37 +398,23 @@ public class VendasFrame extends javax.swing.JFrame {
         painelClienteLayout.setHorizontalGroup(
             painelClienteLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(painelClienteLayout.createSequentialGroup()
-                .add(936, 936, 936)
-                .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-            .add(painelClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jtfCpfCliente, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1074, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(23, 23, 23)
+                .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jtfCpfCliente, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 901, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(46, 46, 46))
         );
         painelClienteLayout.setVerticalGroup(
             painelClienteLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(painelClienteLayout.createSequentialGroup()
-                .add(4, 4, 4)
-                .add(jLabel3)
-                .add(6, 6, 6)
-                .add(jtfCpfCliente, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(22, 22, 22)
+                .add(painelClienteLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel3)
+                    .add(jtfCpfCliente, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(32, 32, 32))
         );
 
         root.add(painelCliente, "painelCliente");
-
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
-
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1130, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 80, Short.MAX_VALUE)
-        );
-
-        root.add(jPanel2, "inicio");
 
         jtfCodigoProduto.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jtfCodigoProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -395,7 +442,7 @@ public class VendasFrame extends javax.swing.JFrame {
                 .add(60, 60, 60)
                 .add(jLabel25))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .add(root, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
             .add(jPanel1Layout.createSequentialGroup()
                 .add(40, 40, 40)
@@ -415,12 +462,12 @@ public class VendasFrame extends javax.swing.JFrame {
                                 .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .add(jtfValorDeVenda1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 362, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                        .add(31, 31, 31)
+                                        .add(jtfValorDeVenda1))
                                     .add(jPanel1Layout.createSequentialGroup()
                                         .add(68, 68, 68)
-                                        .add(jLabel27)
-                                        .add(0, 0, Short.MAX_VALUE))))
+                                        .add(jLabel27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                        .add(171, 171, 171))))
                             .add(jScrollPane8))
                         .add(27, 27, 27)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -476,7 +523,7 @@ public class VendasFrame extends javax.swing.JFrame {
                                     .add(jLabel27))
                                 .add(5, 5, 5)
                                 .add(jtfValorDeQuantidadeVezesValorDeVenda, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 25, Short.MAX_VALUE)
+                .add(25, 25, 25)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(28, 28, 28)
@@ -485,10 +532,10 @@ public class VendasFrame extends javax.swing.JFrame {
                         .add(jtfValorTotal1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(18, 18, 18)
                         .add(lblImagemLogo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 170, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 48, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 49, Short.MAX_VALUE))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 1, Short.MAX_VALUE)
-                        .add(jScrollPane8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 323, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(1, 1, 1)
+                        .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                         .add(10, 10, 10)))
                 .add(root, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(10, 10, 10))
@@ -497,7 +544,6 @@ public class VendasFrame extends javax.swing.JFrame {
         painelAreaTrablaho.add(jPanel1, "principal");
 
         menu.setBackground(new java.awt.Color(255, 0, 51));
-        menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setAutoscrolls(true);
 
@@ -515,35 +561,105 @@ public class VendasFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jListaPagamentos);
 
-        menu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 122, 414, 203));
-        menu.add(lblImagemLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 239, 270, 170));
-        menu.add(lblImagemLogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 239, 270, 170));
-        menu.add(lblImagemPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 373, 337, 200));
-
         jLabel4.setText("Voltar");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel4MousePressed(evt);
             }
         });
-        menu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 559, 52, -1));
+
+        jPanel4.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel4.setLayout(new java.awt.GridBagLayout());
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 0, 204));
         jLabel5.setText("Tipo De Pagamento:");
-        menu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 53, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 42, 11, 77);
+        jPanel4.add(jLabel5, gridBagConstraints);
+
+        org.jdesktop.layout.GroupLayout menuLayout = new org.jdesktop.layout.GroupLayout(menu);
+        menu.setLayout(menuLayout);
+        menuLayout.setHorizontalGroup(
+            menuLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(menuLayout.createSequentialGroup()
+                .add(27, 27, 27)
+                .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 52, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(291, 291, 291)
+                .add(jScrollPane1)
+                .add(366, 366, 366))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, menuLayout.createSequentialGroup()
+                .add(411, 411, 411)
+                .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(408, 408, 408))
+        );
+        menuLayout.setVerticalGroup(
+            menuLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(menuLayout.createSequentialGroup()
+                .add(48, 48, 48)
+                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(menuLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(menuLayout.createSequentialGroup()
+                        .add(455, 455, 455)
+                        .add(jLabel4))
+                    .add(menuLayout.createSequentialGroup()
+                        .add(18, 18, 18)
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 236, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
 
         painelAreaTrablaho.add(menu, "menu");
+
+        jTextField1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+
+        jTextField3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jButton1.setText("Finalizar");
+
+        jLabel6.setText("jLabel6");
 
         org.jdesktop.layout.GroupLayout finalizarLayout = new org.jdesktop.layout.GroupLayout(finalizar);
         finalizar.setLayout(finalizarLayout);
         finalizarLayout.setHorizontalGroup(
             finalizarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1160, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, finalizarLayout.createSequentialGroup()
+                .addContainerGap(411, Short.MAX_VALUE)
+                .add(finalizarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, finalizarLayout.createSequentialGroup()
+                        .add(jLabel6)
+                        .add(127, 127, 127)
+                        .add(finalizarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jTextField1)
+                            .add(jTextField2)
+                            .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 144, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(373, 373, 373))
         );
         finalizarLayout.setVerticalGroup(
             finalizarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 649, Short.MAX_VALUE)
+            .add(finalizarLayout.createSequentialGroup()
+                .add(117, 117, 117)
+                .add(finalizarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel6))
+                .add(18, 18, 18)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(28, 28, 28)
+                .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(35, 35, 35)
+                .add(jButton1)
+                .addContainerGap(373, Short.MAX_VALUE))
         );
 
         painelAreaTrablaho.add(finalizar, "finalizar");
@@ -590,10 +706,6 @@ public class VendasFrame extends javax.swing.JFrame {
         });
         jMenu2.add(itmExcluir);
 
-        itmCancelarVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11, 0));
-        itmCancelarVenda.setText("Cancelar Venda");
-        jMenu2.add(itmCancelarVenda);
-
         itmFinalizarVenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         itmFinalizarVenda.setText("Finalizar Venda");
         itmFinalizarVenda.addActionListener(new java.awt.event.ActionListener() {
@@ -626,6 +738,15 @@ public class VendasFrame extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItem2.setText("Inserir Desconto");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -640,7 +761,7 @@ public class VendasFrame extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(0, 0, 0)
-                .add(painelAreaTrablaho, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(painelAreaTrablaho))
         );
 
         pack();
@@ -831,7 +952,11 @@ public class VendasFrame extends javax.swing.JFrame {
 
         }
         if (resposta == 0) {
-            FinalizarEtapaVenda();
+            try {
+                FinalizarEtapaVenda();
+            } catch (JRException ex) {
+                Logger.getLogger(VendasFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
 //        botaoNegar.addActionListener( new ActionListener() {
@@ -941,7 +1066,16 @@ public class VendasFrame extends javax.swing.JFrame {
                    
         }
     }//GEN-LAST:event_jtfQuantidadeAVender1KeyPressed
-    public void FinalizarEtapaVenda() {
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       CardLayout card  = (CardLayout) root.getLayout();
+       card.show(root,"desconto");
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    public void FinalizarEtapaVenda() throws JRException {
         Pedido pedido = new Pedido();
         if (pagamento != null) {
             pedido.setValor_total_pedido(Double.parseDouble(jtfValorTotal1.getText().replaceAll(",", ".")));
@@ -957,12 +1091,24 @@ public class VendasFrame extends javax.swing.JFrame {
             jpa.getTransaction().commit();
             jpa.refresh(pedido);
 
-            int x = pedido.getId_pedido();
+
+             long  x = pedido.getId_pedido();
 
             PedidoProduto pedidoProduto = new PedidoProduto();
 
             criarPedidoProduto(pedido, pedidoProduto);
-
+             
+            //  JasperReport relatorio = (JasperReport)JRLoader.loadObjectFromFile("C:\\Users\\pedro\\JaspersoftWorkspace\\MyReports\\projeto.jasper");
+            //JasperReport r = JasperCompileManager.compileReport( relat 
+            
+            HashMap params = new HashMap<>();
+            params.put("idPedido", x);
+           
+            JasperPrint jp  = JasperFillManager.fillReport("src/relatorio/r/projeto_1.jasper", params, con);
+            JasperViewer jv = new JasperViewer(jp,false);
+            
+            jv.setVisible(true);
+            
         }
     }
 
@@ -1130,12 +1276,12 @@ public class VendasFrame extends javax.swing.JFrame {
     private javax.persistence.EntityManager entityManager1;
     private javax.swing.JPanel finalizar;
     private javax.swing.JMenuItem itmAdicionarItem;
-    private javax.swing.JMenuItem itmCancelarVenda;
     private javax.swing.JMenuItem itmConsultar;
     private javax.swing.JMenuItem itmEditar;
     private javax.swing.JMenuItem itmExcluir;
     private javax.swing.JMenuItem itmFinalizarVenda;
     private javax.swing.JMenuItem itmMostrarMenu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -1147,14 +1293,23 @@ public class VendasFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jListaPagamentos;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jtfAreaDeVendaProdutoCodigo1;
     private javax.swing.JTextField jtfCodigoProduto;
     private javax.swing.JTextField jtfCpfCliente;
@@ -1165,9 +1320,6 @@ public class VendasFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jtfValorTotal1;
     private javax.swing.JMenuItem jtmSelecionarCliente;
     private javax.swing.JLabel lblImagemLogo;
-    private javax.swing.JLabel lblImagemLogo1;
-    private javax.swing.JLabel lblImagemLogo2;
-    private javax.swing.JLabel lblImagemPagamento;
     private javax.swing.JPanel menu;
     private javax.swing.JDesktopPane painelAreaTrablaho;
     private javax.swing.JPanel painelCliente;
