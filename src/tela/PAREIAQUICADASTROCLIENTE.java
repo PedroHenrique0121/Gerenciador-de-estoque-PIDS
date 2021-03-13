@@ -6,6 +6,7 @@
 package tela;
 
 import QueryesPesonalizadas.QueryPagamento;
+import QueryesPesonalizadas.QueryesCliente;
 import QueryesPesonalizadas.QueryesFornecedor;
 import java.awt.CardLayout;
 import java.awt.event.KeyEvent;
@@ -53,7 +54,7 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
         ImageIcon iconEmp = new ImageIcon("src/images/growthcode.png");
         iconEmp.setImage(iconEmp.getImage().getScaledInstance(391, 260, 1));
         jlbImgImp.setIcon(iconEmp);
-        jtableFornecedor.setRowHeight(28);
+        jtableCliente.setRowHeight(28);
     }
     Cliente cliente = new Cliente();
     Factory fac = new Factory();
@@ -87,8 +88,8 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jSrcolpaneInterno = new javax.swing.JScrollPane();
-        jtableFornecedor = new javax.swing.JTable();
-        jtfPesquisaPorNomeFornecedor = new javax.swing.JTextField();
+        jtableCliente = new javax.swing.JTable();
+        jtfPesquisaPorCliente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jbtExcluir = new javax.swing.JButton();
 
@@ -235,69 +236,70 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
         jSrcolpaneInterno.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jSrcolpaneInterno.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
 
-        jtableFornecedor.setAutoCreateRowSorter(true);
-        jtableFornecedor.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 15)); // NOI18N
-        jtableFornecedor.setModel(new javax.swing.table.DefaultTableModel(
+        jtableCliente.setAutoCreateRowSorter(true);
+        jtableCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 15)); // NOI18N
+        jtableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Fornecedor", "Nome do Fornecedor", "Cidade", "Cpf/cnpj", "Contato"
+                "Codigo", "Nome do Cliente", "Cpf/cnpj", "Contato"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jtableFornecedor.setDoubleBuffered(true);
-        jtableFornecedor.setDragEnabled(true);
-        jtableFornecedor.setFillsViewportHeight(true);
-        jtableFornecedor.setFocusCycleRoot(true);
-        jtableFornecedor.setFocusTraversalPolicyProvider(true);
-        jtableFornecedor.setGridColor(new java.awt.Color(0, 51, 255));
-        jtableFornecedor.setInheritsPopupMenu(true);
-        jtableFornecedor.setSurrendersFocusOnKeystroke(true);
-        jtableFornecedor.getTableHeader().setReorderingAllowed(false);
-        jtableFornecedor.addHierarchyListener(new java.awt.event.HierarchyListener() {
+        jtableCliente.setDoubleBuffered(true);
+        jtableCliente.setDragEnabled(true);
+        jtableCliente.setFillsViewportHeight(true);
+        jtableCliente.setFocusCycleRoot(true);
+        jtableCliente.setFocusTraversalPolicyProvider(true);
+        jtableCliente.setGridColor(new java.awt.Color(0, 51, 255));
+        jtableCliente.setInheritsPopupMenu(true);
+        jtableCliente.setSurrendersFocusOnKeystroke(true);
+        jtableCliente.getTableHeader().setReorderingAllowed(false);
+        jtableCliente.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
-                jtableFornecedorHierarchyChanged(evt);
+                jtableClienteHierarchyChanged(evt);
             }
         });
-        jtableFornecedor.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtableCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jtableFornecedorFocusGained(evt);
+                jtableClienteFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jtableFornecedorFocusLost(evt);
+                jtableClienteFocusLost(evt);
             }
         });
-        jtableFornecedor.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtableCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtableFornecedorKeyPressed(evt);
+                jtableClienteKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtableFornecedorKeyReleased(evt);
+                jtableClienteKeyReleased(evt);
             }
         });
-        jSrcolpaneInterno.setViewportView(jtableFornecedor);
-        if (jtableFornecedor.getColumnModel().getColumnCount() > 0) {
-            jtableFornecedor.getColumnModel().getColumn(0).setResizable(false);
-            jtableFornecedor.getColumnModel().getColumn(0).setPreferredWidth(30);
-            jtableFornecedor.getColumnModel().getColumn(1).setResizable(false);
-            jtableFornecedor.getColumnModel().getColumn(1).setPreferredWidth(230);
-            jtableFornecedor.getColumnModel().getColumn(2).setPreferredWidth(80);
-            jtableFornecedor.getColumnModel().getColumn(4).setPreferredWidth(90);
+        jSrcolpaneInterno.setViewportView(jtableCliente);
+        if (jtableCliente.getColumnModel().getColumnCount() > 0) {
+            jtableCliente.getColumnModel().getColumn(0).setResizable(false);
+            jtableCliente.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jtableCliente.getColumnModel().getColumn(1).setResizable(false);
+            jtableCliente.getColumnModel().getColumn(1).setPreferredWidth(230);
+            jtableCliente.getColumnModel().getColumn(3).setPreferredWidth(90);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSrcolpaneInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jSrcolpaneInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,20 +310,20 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel1);
 
-        jtfPesquisaPorNomeFornecedor.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jtfPesquisaPorNomeFornecedor.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtfPesquisaPorCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jtfPesquisaPorCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jtfPesquisaPorNomeFornecedorFocusGained(evt);
+                jtfPesquisaPorClienteFocusGained(evt);
             }
         });
-        jtfPesquisaPorNomeFornecedor.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtfPesquisaPorCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtfPesquisaPorNomeFornecedorKeyPressed(evt);
+                jtfPesquisaPorClienteKeyPressed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Pesquisa por nome do fornecedor:");
+        jLabel1.setText("Pesquisa por nome do cliente:");
 
         jbtExcluir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jbtExcluir.setText("Excluir");
@@ -340,7 +342,7 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
                 .addGroup(pesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(pesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jtfPesquisaPorNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfPesquisaPorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(pesquisarLayout.createSequentialGroup()
                             .addComponent(jbtExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -354,7 +356,7 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtfPesquisaPorNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfPesquisaPorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -427,54 +429,54 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
         card.show(root, "cadastrar");
     }//GEN-LAST:event_jbtVoltarActionPerformed
 
-    private void jtableFornecedorHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_jtableFornecedorHierarchyChanged
+    private void jtableClienteHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_jtableClienteHierarchyChanged
 
-    }//GEN-LAST:event_jtableFornecedorHierarchyChanged
+    }//GEN-LAST:event_jtableClienteHierarchyChanged
 
-    private void jtableFornecedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtableFornecedorFocusGained
+    private void jtableClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtableClienteFocusGained
 
-    }//GEN-LAST:event_jtableFornecedorFocusGained
+    }//GEN-LAST:event_jtableClienteFocusGained
 
-    private void jtableFornecedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtableFornecedorFocusLost
+    private void jtableClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtableClienteFocusLost
 
-    }//GEN-LAST:event_jtableFornecedorFocusLost
+    }//GEN-LAST:event_jtableClienteFocusLost
 
-    private void jtableFornecedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFornecedorKeyPressed
+    private void jtableClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableClienteKeyPressed
 
-    }//GEN-LAST:event_jtableFornecedorKeyPressed
+    }//GEN-LAST:event_jtableClienteKeyPressed
 
-    private void jtableFornecedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFornecedorKeyReleased
+    private void jtableClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableClienteKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            int linha = jtableFornecedor.getSelectedRow();
-            int coluna = jtableFornecedor.getSelectedColumn();
-            editarFornecedor(linha, coluna);
+            int linha = jtableCliente.getSelectedRow();
+            int coluna = jtableCliente.getSelectedColumn();
+            editarCliente(linha, coluna);
 
         }
-    }//GEN-LAST:event_jtableFornecedorKeyReleased
+    }//GEN-LAST:event_jtableClienteKeyReleased
 
-    private void jtfPesquisaPorNomeFornecedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesquisaPorNomeFornecedorFocusGained
-        if (jtableFornecedor.isEditing()) {
-           jtableFornecedor.getCellEditor().stopCellEditing();
+    private void jtfPesquisaPorClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesquisaPorClienteFocusGained
+        if (jtableCliente.isEditing()) {
+           jtableCliente.getCellEditor().stopCellEditing();
         }
-    }//GEN-LAST:event_jtfPesquisaPorNomeFornecedorFocusGained
+    }//GEN-LAST:event_jtfPesquisaPorClienteFocusGained
 
-    private void jtfPesquisaPorNomeFornecedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisaPorNomeFornecedorKeyPressed
+    private void jtfPesquisaPorClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisaPorClienteKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            List<Fornecedor> lista = new ArrayList<>();
-            lista = pesquisaPorNome(jtfPesquisaPorNomeFornecedor.getText());
+            List<Cliente> lista = new ArrayList<>();
+            lista = pesquisaPorNome(jtfPesquisaPorCliente.getText());
 
-            DefaultTableModel dtm = (DefaultTableModel) jtableFornecedor.getModel();
-            for (int i = jtableFornecedor.getRowCount() - 1; i >= 0; i--) {
+            DefaultTableModel dtm = (DefaultTableModel) jtableCliente.getModel();
+            for (int i = jtableCliente.getRowCount() - 1; i >= 0; i--) {
                 dtm.removeRow(i);
             }
             for (int i = 0; i < lista.size(); i++) {
                 dtm.addRow(new Object[]{
-                    lista.get(i).getId(),
-                    lista.get(i).getNome(),
-                    lista.get(i).getCidade(),
-                    lista.get(i).getCpfCnpj(),
-                    lista.get(i).getContato()
+                    lista.get(i).getId_cliente(),
+                    lista.get(i).getNome_cliente(),
+                    lista.get(i).getCpf_cliente(),
+                    lista.get(i).getTelefone(),
+                   
                    
 
                 });
@@ -482,37 +484,37 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_jtfPesquisaPorNomeFornecedorKeyPressed
+    }//GEN-LAST:event_jtfPesquisaPorClienteKeyPressed
 
     private void jbtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtExcluirActionPerformed
         try {
 
-            int linha = jtableFornecedor.getSelectedRow();
+            int linha = jtableCliente.getSelectedRow();
 
-            int id = Integer.parseInt(jtableFornecedor.getValueAt(linha, 0).toString());
+            int id = Integer.parseInt(jtableCliente.getValueAt(linha, 0).toString());
 
-           Fornecedor f =  em.find(Fornecedor.class, id);
-            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente Excluir o Fornecedor?", "Janela de confirmação", JOptionPane.YES_NO_OPTION);
+           Cliente c=  em.find(Cliente.class, id);
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente Excluir o Cliente?", "Janela de confirmação", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
                 em.getTransaction().begin();
-                em.remove(f);
+                em.remove(c);
                 em.getTransaction().commit();
-                JOptionPane.showMessageDialog(null, "Fornecedor Excluido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-                DefaultTableModel dtm = (DefaultTableModel) jtableFornecedor.getModel();
+                JOptionPane.showMessageDialog(null, "Cliente Excluido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                DefaultTableModel dtm = (DefaultTableModel) jtableCliente.getModel();
 
                 dtm.removeRow(linha);
-                jtfPesquisaPorNomeFornecedor.grabFocus();
-                jtfPesquisaPorNomeFornecedor.setText("");
+                jtfPesquisaPorCliente.grabFocus();
+                jtfPesquisaPorCliente.setText("");
             }
             if (resposta == JOptionPane.NO_OPTION) {
-                jtfPesquisaPorNomeFornecedor.grabFocus();
-                jtfPesquisaPorNomeFornecedor.selectAll();
+                jtfPesquisaPorCliente.grabFocus();
+                jtfPesquisaPorCliente.selectAll();
             }
 
         } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(null, "Nenhum usuario selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
-            jtfPesquisaPorNomeFornecedor.grabFocus();
-            jtfPesquisaPorNomeFornecedor.selectAll();
+            JOptionPane.showMessageDialog(null, "Nenhum Cliente selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
+            jtfPesquisaPorCliente.grabFocus();
+            jtfPesquisaPorCliente.selectAll();
         }
     }//GEN-LAST:event_jbtExcluirActionPerformed
 
@@ -597,38 +599,37 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
         }
     }
 
-    public void editarFornecedor(int linha, int coluna) {
+    public void editarCliente(int linha, int coluna) {
 
-        String conteudo = jtableFornecedor.getValueAt(linha, coluna) + "";
-        Fornecedor f = new Fornecedor();
-        f.setId(Integer.parseInt(jtableFornecedor.getValueAt(linha,0).toString()));
-        f.setNome(jtableFornecedor.getValueAt(linha, 1).toString());
-        f.setCidade(jtableFornecedor.getValueAt(linha, 2).toString());
-        f.setCpfCnpj(jtableFornecedor.getValueAt(linha, 3).toString());
-        f.setContato(jtableFornecedor.getValueAt(linha, 4).toString());
+        String conteudo = jtableCliente.getValueAt(linha, coluna) + "";
+        Cliente c = new Cliente();
+        c.setId_cliente(Integer.parseInt(jtableCliente.getValueAt(linha,0).toString()));
+        c.setNome_cliente(jtableCliente.getValueAt(linha, 1).toString());
+        c.setCpf_cliente(jtableCliente.getValueAt(linha, 2).toString());
+        c.setTelefone(jtableCliente.getValueAt(linha, 3).toString());
 
         try {
 
-            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este Fornecedor?", "Janela de Confimação", JOptionPane.YES_NO_OPTION);
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este Cliente?", "Janela de Confimação", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.NO_OPTION) {
-                // preencherTabelaPorNome(nomePesquisado);
-                jtfPesquisaPorNomeFornecedor.grabFocus();
-                jtfPesquisaPorNomeFornecedor.selectAll();
+                prencherPorId(c);
+                jtfPesquisaPorCliente.grabFocus();
+                jtfPesquisaPorCliente.selectAll();
             }
             if (resposta == JOptionPane.YES_OPTION) {
                 em.getTransaction().begin();
-                em.merge(f);
+                em.merge(c);
                 em.getTransaction().commit();
 
-                JOptionPane.showMessageDialog(null, "Fornecedor Editado com Sucesso!", "Alerta", JOptionPane.INFORMATION_MESSAGE);
-                prencherPorId(f);
-                jtfPesquisaPorNomeFornecedor.grabFocus();
-                jtfPesquisaPorNomeFornecedor.selectAll();
+                JOptionPane.showMessageDialog(null, "Cliente editado com Sucesso!", "Alerta", JOptionPane.INFORMATION_MESSAGE);
+                prencherPorId(c);
+                jtfPesquisaPorCliente.grabFocus();
+                jtfPesquisaPorCliente.selectAll();
             }
 
         } catch (RollbackException e) {
             JOptionPane.showMessageDialog(null, "Houve um erro na tentativa de edição!");
-            jtfPesquisaPorNomeFornecedor.grabFocus();
+            jtfPesquisaPorCliente.grabFocus();
         }
     }
 
@@ -639,21 +640,20 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
         jtfNomeCliente.setText("");
     }
 
-    public void prencherPorId(Fornecedor f) {
-        f = em.find(Fornecedor.class, f.getId());
-        DefaultTableModel dtm = (DefaultTableModel) jtableFornecedor.getModel();
+    public void prencherPorId(Cliente c) {
+        c = em.find(Cliente.class, c.getId_cliente());
+        DefaultTableModel dtm = (DefaultTableModel) jtableCliente.getModel();
         dtm.setNumRows(0);
         dtm.addRow(new Object[]{
-            f.getId(),
-            f.getNome(),
-            f.getCidade(),
-            f.getCpfCnpj(),
-            f.getContato()
+            c.getId_cliente(),
+            c.getNome_cliente(),
+            c.getCpf_cliente(),
+            c.getTelefone()
         });
     }
-    public List<Fornecedor> pesquisaPorNome(String nome) {
-        QueryesFornecedor qf = new QueryesFornecedor();
-       return qf.retornaForncedorPorNome(nome);
+    public List<Cliente> pesquisaPorNome(String nome) {
+        QueryesCliente qc = new QueryesCliente();
+       return qc.retornaClientePorNome(nome);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -673,10 +673,10 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
     private javax.swing.JButton jbtSalvar;
     private javax.swing.JButton jbtVoltar;
     private javax.swing.JLabel jlbImgImp;
-    private javax.swing.JTable jtableFornecedor;
+    private javax.swing.JTable jtableCliente;
     private javax.swing.JFormattedTextField jtfCpfCnpj;
     private javax.swing.JTextField jtfNomeCliente;
-    private javax.swing.JTextField jtfPesquisaPorNomeFornecedor;
+    private javax.swing.JTextField jtfPesquisaPorCliente;
     private javax.swing.JFormattedTextField jtfTelefone;
     private javax.swing.JPanel pesquisar;
     private javax.swing.JPanel root;

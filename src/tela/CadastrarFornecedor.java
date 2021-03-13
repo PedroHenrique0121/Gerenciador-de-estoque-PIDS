@@ -545,7 +545,7 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
             }
 
         } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(null, "Nenhum usuario selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nenhum Fornecedor selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
             jtfPesquisaPorNomeFornecedor.grabFocus();
             jtfPesquisaPorNomeFornecedor.selectAll();
         }
