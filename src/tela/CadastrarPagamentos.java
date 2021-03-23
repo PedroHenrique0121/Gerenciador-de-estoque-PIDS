@@ -31,6 +31,15 @@ public class CadastrarPagamentos extends javax.swing.JFrame {
     /**
      * Creates new form Pagamentos
      */
+    
+    private static CadastrarPagamentos cp;
+      public static CadastrarPagamentos getInstancia() {
+        if (cp == null) {
+
+            cp = new CadastrarPagamentos();
+        }
+        return cp;
+    }
     public CadastrarPagamentos() {
         initComponents();
 
@@ -63,7 +72,6 @@ public class CadastrarPagamentos extends javax.swing.JFrame {
         jbtPesquisar = new javax.swing.JButton();
         jbtSalvar = new javax.swing.JButton();
         jlbImgImp = new javax.swing.JLabel();
-        jCalendarComboBox1 = new de.wannawork.jcalendar.JCalendarComboBox();
         editar = new javax.swing.JPanel();
         jtfPesquisaPorTipoPagamento = new javax.swing.JTextField();
         jbtVoltar3 = new javax.swing.JButton();
@@ -72,7 +80,7 @@ public class CadastrarPagamentos extends javax.swing.JFrame {
         jSrcolpaneInterno = new javax.swing.JScrollPane();
         jTablePagamento = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         root.setLayout(new java.awt.CardLayout());
 
@@ -121,9 +129,7 @@ public class CadastrarPagamentos extends javax.swing.JFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(cadastrarLayout.createSequentialGroup()
                         .addComponent(jbtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jCalendarComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
+                        .addGap(274, 274, 274)
                         .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cadastrarLayout.createSequentialGroup()
@@ -141,11 +147,9 @@ public class CadastrarPagamentos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jlbImgImp, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(cadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jbtPesquisar)
-                        .addComponent(jbtSalvar))
-                    .addComponent(jCalendarComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(cadastrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtPesquisar)
+                    .addComponent(jbtSalvar))
                 .addGap(71, 71, 71))
         );
 
@@ -527,7 +531,6 @@ public class CadastrarPagamentos extends javax.swing.JFrame {
     private javax.swing.JPanel cadastrar;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
     private javax.swing.JPanel editar;
-    private de.wannawork.jcalendar.JCalendarComboBox jCalendarComboBox1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jSrcolpaneInterno;

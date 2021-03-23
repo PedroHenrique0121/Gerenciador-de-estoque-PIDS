@@ -28,4 +28,14 @@ public class QueryesProduto {
         
         return query.getResultList();
     }
+    
+     public List<Produto> retornaTodos(){
+        
+        Query  query = em.createNativeQuery("SELECT * FROM produto ",Produto.class);
+       
+        
+        
+        return query.getResultList();
+    }
+    
 }

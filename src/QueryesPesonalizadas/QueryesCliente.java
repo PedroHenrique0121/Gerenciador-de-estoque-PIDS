@@ -23,7 +23,7 @@ public class QueryesCliente {
     
     public List<Cliente> retornaClientePorNome(String nome){
         
-        Query  query = em.createNativeQuery("SELECT * FROM cliente where NOME_CLIENTE  LIKE '%"+nome+"%' ;",Cliente.class);
+        Query  query = em.createNativeQuery("SELECT * FROM cliente where NOME_CLIENTE  LIKE '"+nome+"%' ;",Cliente.class);
         query.setParameter(1, nome);
         
         

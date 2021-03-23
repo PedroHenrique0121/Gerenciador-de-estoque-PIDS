@@ -35,6 +35,16 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    private static CadastrarFornecedor cf;
+
+    public static CadastrarFornecedor getInstancia() {
+        if (cf == null) {
+
+            cf = new CadastrarFornecedor();
+        }
+        return cf;
+    }
+
     public CadastrarFornecedor() {
         initComponents();
         setLocationRelativeTo(null);
@@ -93,7 +103,7 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jbtExcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         root.setLayout(new java.awt.CardLayout());
@@ -475,7 +485,7 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jtableFornecedorFocusLost
 
     private void jtableFornecedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFornecedorKeyPressed
-
+        
     }//GEN-LAST:event_jtableFornecedorKeyPressed
 
     private void jtableFornecedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFornecedorKeyReleased
@@ -489,7 +499,7 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
 
     private void jtfPesquisaPorNomeFornecedorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesquisaPorNomeFornecedorFocusGained
         if (jtableFornecedor.isEditing()) {
-           jtableFornecedor.getCellEditor().stopCellEditing();
+            jtableFornecedor.getCellEditor().stopCellEditing();
         }
     }//GEN-LAST:event_jtfPesquisaPorNomeFornecedorFocusGained
 
@@ -510,7 +520,6 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
                     lista.get(i).getCidade(),
                     lista.get(i).getCpfCnpj(),
                     lista.get(i).getContato()
-                   
 
                 });
 
@@ -526,7 +535,7 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
 
             int id = Integer.parseInt(jtableFornecedor.getValueAt(linha, 0).toString());
 
-           Fornecedor f =  em.find(Fornecedor.class, id);
+            Fornecedor f = em.find(Fornecedor.class, id);
             int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente Excluir o Fornecedor?", "Janela de confirmação", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
                 em.getTransaction().begin();
@@ -626,7 +635,7 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
 
         String conteudo = jtableFornecedor.getValueAt(linha, coluna) + "";
         Fornecedor f = new Fornecedor();
-        f.setId(Integer.parseInt(jtableFornecedor.getValueAt(linha,0).toString()));
+        f.setId(Integer.parseInt(jtableFornecedor.getValueAt(linha, 0).toString()));
         f.setNome(jtableFornecedor.getValueAt(linha, 1).toString());
         f.setCidade(jtableFornecedor.getValueAt(linha, 2).toString());
         f.setCpfCnpj(jtableFornecedor.getValueAt(linha, 3).toString());
@@ -676,11 +685,12 @@ public class CadastrarFornecedor extends javax.swing.JFrame {
             f.getContato()
         });
     }
+
     public List<Fornecedor> pesquisaPorNome(String nome) {
         QueryesFornecedor qf = new QueryesFornecedor();
-       return qf.retornaForncedorPorNome(nome);
+        return qf.retornaForncedorPorNome(nome);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

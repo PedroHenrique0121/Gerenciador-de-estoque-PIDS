@@ -53,17 +53,17 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
     EntityManager em;
     Factory factory = new Factory();
-    private static CadastrarProduto CP;
+    private static CadastrarProduto cp;
     List<JCheckBox> nova = new ArrayList<>();
     Produto produto = new Produto();
     Acesso acesso = new Acesso();
 
     public static CadastrarProduto getInstancia() {
-        if (CP == null) {
+        if (cp == null) {
 
-            CP = new CadastrarProduto();
+            cp = new CadastrarProduto();
         }
-        return CP;
+        return cp;
     }
 
     /**
@@ -89,13 +89,13 @@ public class CadastrarProduto extends javax.swing.JFrame {
         jtfPesquisaPorNomeFornecedor.grabFocus();
         jtfDescriçãoProduto.grabFocus();
         
-        if(VerificacaoLoginUsuario.userStatic.getAcesso().getId()== VerificacaoLoginUsuario.ADM_SISTEMA ){
-            
-        }else{
-            bloquearItens(false);
-        }
-        //formatarPrecos(jtfValorCustoProduto);
-        //formatarPrecos(jtfValorVendaProduto);
+//        if(VerificacaoLoginUsuario.userStatic.getAcesso().getId()== VerificacaoLoginUsuario.ADM_SISTEMA ){
+//            
+//        }else{
+//            bloquearItens(false);
+//        }
+       // formatarPrecos(jtfValorCustoProduto);
+       //formatarPrecos(jtfValorVendaProduto);
        
     }
 
@@ -118,8 +118,6 @@ public class CadastrarProduto extends javax.swing.JFrame {
         jSrcolpaneInterno = new javax.swing.JScrollPane();
         jtableProduto = new javax.swing.JTable();
         jbtExcluir = new javax.swing.JButton();
-        jtfPesquisaPorCodigo = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         PanelSalvar = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jtfDescriçãoProduto = new javax.swing.JTextField();
@@ -264,56 +262,42 @@ public class CadastrarProduto extends javax.swing.JFrame {
             }
         });
 
-        jtfPesquisaPorCodigo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel8.setText("Codigo do Produto:");
-
         javax.swing.GroupLayout PanelPesquisarLayout = new javax.swing.GroupLayout(PanelPesquisar);
         PanelPesquisar.setLayout(PanelPesquisarLayout);
         PanelPesquisarLayout.setHorizontalGroup(
             PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelPesquisarLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelPesquisarLayout.createSequentialGroup()
-                        .addComponent(jbtExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 520, Short.MAX_VALUE)
-                        .addComponent(jbtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(PanelPesquisarLayout.createSequentialGroup()
-                        .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfPesquisaPorCodigo)
+                        .addComponent(jtfPesquisaPorNomoProduto)
+                        .addContainerGap())
+                    .addGroup(PanelPesquisarLayout.createSequentialGroup()
+                        .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(PanelPesquisarLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfPesquisaPorNomoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(75, 75, 75))
+                                .addComponent(jbtExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 520, Short.MAX_VALUE)
+                                .addComponent(jbtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE))
+                        .addGap(75, 75, 75))))
         );
         PanelPesquisarLayout.setVerticalGroup(
             PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPesquisarLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtfPesquisaPorNomoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelPesquisarLayout.createSequentialGroup()
-                        .addComponent(jtfPesquisaPorNomoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(PanelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtVoltar)
-                            .addComponent(jbtExcluir))
-                        .addGap(134, 134, 134))
-                    .addGroup(PanelPesquisarLayout.createSequentialGroup()
-                        .addComponent(jtfPesquisaPorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jbtVoltar)
+                    .addComponent(jbtExcluir))
+                .addGap(134, 134, 134))
         );
 
         PanelRoot.add(PanelPesquisar, "pesquisar");
@@ -686,11 +670,11 @@ public class CadastrarProduto extends javax.swing.JFrame {
             }
             for (int i = 0; i < lista.size(); i++) {
                 dtm.addRow(new Object[]{
-                    lista.get(i).getId_produto(),
-                    lista.get(i).getDescricao_produto(),
-                    lista.get(i).getPreco_custo_produto(),
-                    lista.get(i).getPreco_venda_produto(),
-                    lista.get(i).getEstoque_produto(),
+                    lista.get(i).getId(),
+                    lista.get(i).getDescricaoProduto(),
+                    lista.get(i).getPrecoCustoProduto(),
+                    lista.get(i).getPrecoVendaProduto(),
+                    lista.get(i).getEstoqueProduto(),
                     lista.get(i).getFornecedor().getId()
 
                 });
@@ -760,7 +744,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
             }
 
         } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(null, "Nenhum usuario selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nenhum Produto selecionado", "Erro", JOptionPane.ERROR_MESSAGE);
             jtfPesquisaPorNomoProduto.grabFocus();
             jtfPesquisaPorNomoProduto.selectAll();
         }
@@ -955,11 +939,11 @@ public class CadastrarProduto extends javax.swing.JFrame {
         int x = 0;
         try {
           
-            produto.setDescricao_produto(jtfDescriçãoProduto.getText());
-            produto.setPreco_venda_produto(Double.parseDouble(jtfValorVendaProduto.getText().replaceAll(",", ".")));
-            produto.setPreco_custo_produto(Double.parseDouble(jtfValorCustoProduto.getText().replaceAll(",", ".")));
+            produto.setDescricaoProduto(jtfDescriçãoProduto.getText());
+            produto.setPrecoVendaProduto(Double.parseDouble(jtfValorVendaProduto.getText().replaceAll(",", ".")));
+            produto.setPrecoCustoProduto(Double.parseDouble(jtfValorCustoProduto.getText().replaceAll(",", ".")));
 
-            produto.setEstoque_produto(Integer.parseInt(jtfQuantidadeEmEstoque.getText()));
+            produto.setEstoqueProduto(Integer.parseInt(jtfQuantidadeEmEstoque.getText()));
 
             produto.setFornecedor(em.find(Fornecedor.class, Integer.parseInt(jtfCodigoFornecedor.getText())));
 
@@ -978,7 +962,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         } else {
 
             try {
-                JOptionPane.showMessageDialog(null, produto.getId_produto());
+                
                 em.getTransaction().begin();
                 em.persist(produto);
                 em.getTransaction().commit();
@@ -999,24 +983,24 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
     public void limparCampos() {
         //formatarPrecos(jtfValorCustoProduto);
-        //formatarPrecos(jtfValorVendaProduto);
-        jtfValorVendaProduto.setText("");
-        jtfValorCustoProduto.setValue("");
+       // formatarPrecos(jtfValorVendaProduto);
+      jtfValorVendaProduto.setText("");
+       jtfValorCustoProduto.setText("");
         jtfDescriçãoProduto.setText("");
         jtfQuantidadeEmEstoque.setText("");
         jtfCodigoFornecedor.setText("");
     }
 
     public void prencherPorId(Produto produto) {
-        produto = em.find(Produto.class, produto.getId_produto());
+        produto = em.find(Produto.class, produto.getId());
         DefaultTableModel dtm = (DefaultTableModel) jtableProduto.getModel();
         dtm.setNumRows(0);
         dtm.addRow(new Object[]{
-            produto.getId_produto(),
-            produto.getDescricao_produto(),
-            produto.getPreco_custo_produto(),
-            produto.getPreco_venda_produto(),
-            produto.getEstoque_produto(),
+            produto.getId(),
+            produto.getDescricaoProduto(),
+            produto.getPrecoCustoProduto(),
+            produto.getPrecoVendaProduto(),
+            produto.getEstoqueProduto(),
             produto.getFornecedor().getId()
         });
     }
@@ -1027,11 +1011,12 @@ public class CadastrarProduto extends javax.swing.JFrame {
                  DecimalFormat format = new DecimalFormat();
                   NumberFormatter formatter = new NumberFormatter(format);
                 try{
-               
+                
+               format.setParseBigDecimal(true);
                 format.setMinimumFractionDigits(2);
                 format.setMaximumFractionDigits(2);
-                format.setRoundingMode(RoundingMode.UNNECESSARY);
-               
+                format.setRoundingMode(RoundingMode.HALF_UP);
+                format.setDecimalSeparatorAlwaysShown(false);
                 formatter.setAllowsInvalid(false);
                 formatter.setMinimum(0.00);
                 formatter.setMaximum(999999999.99);
@@ -1053,11 +1038,11 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
         String conteudo = jtableProduto.getValueAt(linha, coluna) + "";
         Produto produto = new Produto();
-        produto.setId_produto(Integer.parseInt(jtableProduto.getValueAt(linha, 0).toString()));
-        produto.setDescricao_produto(jtableProduto.getValueAt(linha, 1).toString());
-        produto.setPreco_custo_produto(Double.parseDouble(jtableProduto.getValueAt(linha, 2).toString()));
-        produto.setPreco_venda_produto(Double.parseDouble(jtableProduto.getValueAt(linha, 3).toString()));
-        produto.setEstoque_produto(Integer.parseInt(jtableProduto.getValueAt(linha, 4).toString()));
+        produto.setId(Integer.parseInt(jtableProduto.getValueAt(linha, 0).toString()));
+        produto.setDescricaoProduto(jtableProduto.getValueAt(linha, 1).toString());
+        produto.setPrecoCustoProduto(Double.parseDouble(jtableProduto.getValueAt(linha, 2).toString()));
+        produto.setPrecoVendaProduto(Double.parseDouble(jtableProduto.getValueAt(linha, 3).toString()));
+        produto.setEstoqueProduto(Integer.parseInt(jtableProduto.getValueAt(linha, 4).toString()));
 
         produto.setFornecedor(em.find(Fornecedor.class, Integer.parseInt( jtableProduto.getValueAt(linha, 5).toString())));
 
@@ -1127,7 +1112,6 @@ public class CadastrarProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1146,7 +1130,6 @@ public class CadastrarProduto extends javax.swing.JFrame {
     private javax.swing.JTable jtableProduto;
     private javax.swing.JTextField jtfCodigoFornecedor;
     private javax.swing.JTextField jtfDescriçãoProduto;
-    private javax.swing.JTextField jtfPesquisaPorCodigo;
     private javax.swing.JTextField jtfPesquisaPorNomeFornecedor;
     private javax.swing.JTextField jtfPesquisaPorNomoProduto;
     private javax.swing.JTextField jtfQuantidadeEmEstoque;

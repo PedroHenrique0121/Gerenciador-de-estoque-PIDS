@@ -32,7 +32,6 @@ import modelos.Usuario;
  */
 public class Principal extends javax.swing.JFrame {
 
-   
     ValidarJanelas criarInternal = new ValidarJanelas();
     Timer timer;
     Calendar calendar = Calendar.getInstance();
@@ -49,7 +48,6 @@ public class Principal extends javax.swing.JFrame {
         lblUsuarioLogado.setText(VerificacaoLoginUsuario.userStatic.getNome());
 
         atualizaHoras();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -81,11 +79,13 @@ public class Principal extends javax.swing.JFrame {
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Cadastros");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Clientes");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Fornecedor(Em desenvolvimento)");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Fornecedor");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Produtos");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Usuarios");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Pagamentos");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Geraçao de Pedidos");
@@ -93,19 +93,13 @@ public class Principal extends javax.swing.JFrame {
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Relatorios");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Vendas");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Vendas/Pedidos");
         javax.swing.tree.DefaultMutableTreeNode treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Fechamento de caixa");
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Busca por vendas/pedidos");
         treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Produtos");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Fornecedor");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Clientes");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Usuarios");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Relatorio Produtos");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Vendas");
@@ -208,11 +202,69 @@ public class Principal extends javax.swing.JFrame {
         try {
             nome = jTree2.getSelectionPath().getLastPathComponent().toString();
         } catch (NullPointerException e) {
-            
+
         }
-        if (nome.equals("Usuarios")) {
+
+        if (nome.equals("Pedidos/Orçamentos")) {
             if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.ADM_SISTEMA) {
-                criarInternal.abrirJanelaFrame(CadastrarUsuario.getInstancia());
+                criarInternal.abrirJanelaFrame(GeracaoPedidosOcamentos.getInstancia());
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+            } else {
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+                JOptionPane.showMessageDialog(null, "O usuario não possui permissão para entrar nesse modulo!", "Alerta!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+
+        if (nome.equals("Relatorio Produtos")) {
+            if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.ADM_SISTEMA
+                    || VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.USUARIO_SISTEMA
+                    || VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.VENDEDOR_SISTEMA) {
+                criarInternal.abrirJanelaFrame(ProdutoRelatorio.getInstancia());
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+            } else {
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+                JOptionPane.showMessageDialog(null, "O usuario não possui permissão para entrar nesse modulo!", "Alerta!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+        ///////////////////////////////////////////
+        if (nome.equals("Busca por vendas/pedidos")) {
+            if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.ADM_SISTEMA) {
+                criarInternal.abrirJanelaFrame(PedidoRelatorio.getInstancia());
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+            } else {
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+                JOptionPane.showMessageDialog(null, "O usuario não possui permissão para entrar nesse modulo!", "Alerta!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+        if (nome.equals("Pagamentos")) {
+            if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.ADM_SISTEMA) {
+                criarInternal.abrirJanelaFrame(CadastrarPagamentos.getInstancia());
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+            } else {
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+                JOptionPane.showMessageDialog(null, "O usuario não possui permissão para entrar nesse modulo!", "Alerta!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+        if (nome.equals("Clientes")) {
+            if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.ADM_SISTEMA
+                    || VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.VENDEDOR_SISTEMA) {
+                criarInternal.abrirJanelaFrame(CadastrarClientes.getInstancia());
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+            } else {
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
+                JOptionPane.showMessageDialog(null, "O usuario não possui permissão para entrar nesse modulo!", "Alerta!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+        ///////////////////////////////
+        if (nome.equals("Fornecedor")) {
+            if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.ADM_SISTEMA
+                    || VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.VENDEDOR_SISTEMA) {
+                criarInternal.abrirJanelaFrame(CadastrarFornecedor.getInstancia());
                 jTree2.removeSelectionPath(jTree2.getSelectionPath());
             } else {
                 jTree2.removeSelectionPath(jTree2.getSelectionPath());
@@ -229,7 +281,7 @@ public class Principal extends javax.swing.JFrame {
                 jTree2.removeSelectionPath(jTree2.getSelectionPath());
             } else {
                 JOptionPane.showMessageDialog(null, "O usuario não possui permissão para entrar nesse modulo!", "Alerta!", JOptionPane.ERROR_MESSAGE);
-            jTree2.removeSelectionPath(jTree2.getSelectionPath());
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
             }
 
         }
@@ -237,7 +289,7 @@ public class Principal extends javax.swing.JFrame {
         if (nome.equals("Usuarios")) {
             if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.ADM_SISTEMA) {
                 criarInternal.abrirJanelaFrame(CadastrarUsuario.getInstancia());
-            jTree2.removeSelectionPath(jTree2.getSelectionPath());
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
             } else {
                 jTree2.removeSelectionPath(jTree2.getSelectionPath());
                 JOptionPane.showMessageDialog(null, "O usuario não possui permissão para entrar nesse modulo!", "Alerta!", JOptionPane.ERROR_MESSAGE);
@@ -246,9 +298,9 @@ public class Principal extends javax.swing.JFrame {
         }
         if (nome.equals("PDV")) {
 
-            if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.USUARIO_SISTEMA) {
+            if (VerificacaoLoginUsuario.userStatic.getAcesso().getId() == VerificacaoLoginUsuario.USUARIO_SISTEMA ) {
                 JOptionPane.showMessageDialog(null, "O usuario não possui permissão para entrar nesse modulo!", "Alerta!", JOptionPane.ERROR_MESSAGE);
-                jTree2.removeSelectionPath(jTree2.getSelectionPath());     
+                jTree2.removeSelectionPath(jTree2.getSelectionPath());
             } else {
                 try {
                     criarInternal.abrirJanelaFrame(VendasFrame.getInstancia());

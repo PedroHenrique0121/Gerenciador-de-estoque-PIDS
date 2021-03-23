@@ -38,25 +38,47 @@ public class Produto implements Serializable {
     private Fornecedor fornecedor;
     @OneToMany(mappedBy = "produto")
     private List<PedidoProduto> pedidoProduto;
-    
-    public int getId_produto() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId_produto(int id_produto) {
-        this.id = id_produto;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getDescricao_produto() {
+    public String getDescricaoProduto() {
         return descricaoProduto;
     }
 
-    public void setDescricao_produto(String descricao_produto) {
-        this.descricaoProduto = descricao_produto;
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
     }
 
-    public double getPreco_venda_produto() {
+    
+
+    public double getPrecoVendaProduto() {
         return precoVendaProduto;
+    }
+
+    public void setPrecoVendaProduto(double precoVendaProduto) {
+        this.precoVendaProduto = precoVendaProduto;
+    }
+
+    public double getPrecoCustoProduto() {
+        return precoCustoProduto;
+    }
+
+    public void setPrecoCustoProduto(double precoCustoProduto) {
+        this.precoCustoProduto = precoCustoProduto;
+    }
+
+    public int getEstoqueProduto() {
+        return estoqueProduto;
+    }
+
+    public void setEstoqueProduto(int estoqueProduto) {
+        this.estoqueProduto = estoqueProduto;
     }
 
     public Fornecedor getFornecedor() {
@@ -74,26 +96,7 @@ public class Produto implements Serializable {
     public void setPedidoProduto(List<PedidoProduto> pedidoProduto) {
         this.pedidoProduto = pedidoProduto;
     }
-
-    public void setPreco_venda_produto(double preco_venda_produto) {
-        this.precoVendaProduto = preco_venda_produto;
-    }
-
-    public double getPreco_custo_produto() {
-        return precoCustoProduto;
-    }
-
-    public void setPreco_custo_produto(double preco_custo_produto) {
-        this.precoCustoProduto = preco_custo_produto;
-    }
-
-    public int getEstoque_produto() {
-        return estoqueProduto;
-    }
-
-    public void setEstoque_produto(int estoque_produto) {
-        this.estoqueProduto = estoque_produto;
-    }
     
+   
     
 }

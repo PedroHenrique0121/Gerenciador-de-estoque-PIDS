@@ -103,7 +103,7 @@ public class PedidoRelatorio extends javax.swing.JFrame {
         jbtFechar1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         root.setLayout(new java.awt.CardLayout());
 
@@ -524,10 +524,14 @@ public class PedidoRelatorio extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(PedidoRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        List<PedidoCompletoo> lista = new ArrayList<>();
+         List<PedidoCompletoo> lista = new ArrayList<>();
+        
+         
+          try{
+              
+         
         lista = buscarPedido(Integer.parseInt(jtfCodigoCliente.getText()), data);
-
+      
         DefaultTableModel dtm = (DefaultTableModel) jtablePedido.getModel();
         dtm.setNumRows(0);
         if (lista.size() == 0) {
@@ -549,9 +553,13 @@ public class PedidoRelatorio extends javax.swing.JFrame {
                 card.show(root, "geracao");
                 jlbResults.setText(lista.size() + "");
             }
+        }
+          }catch(NumberFormatException e){
+              JOptionPane.showMessageDialog(null,"Primeiro  é preciso preencher os campos adequadamente!");
+          }
 
     }//GEN-LAST:event_jbtBuscarPorPedidoActionPerformed
-    }
+    
     private void jtablePedidoHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_jtablePedidoHierarchyChanged
 
     }//GEN-LAST:event_jtablePedidoHierarchyChanged

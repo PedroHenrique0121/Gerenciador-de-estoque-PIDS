@@ -25,8 +25,8 @@ public class Querys {
         // Query queryB = jpa.createQuery("SELECT p FROM Produto p WHERE p.idProduto = '" + id_produto + "' ", Produto.class);
         produto = jpa.find(Produto.class, id_produto);
         //(Produto) queryB.getSingleResult();
-        int quantidadeCalculada = produto.getEstoque_produto() - quantidade;
-        produto.setEstoque_produto(quantidadeCalculada);
+        int quantidadeCalculada = produto.getEstoqueProduto() - quantidade;
+        produto.setEstoqueProduto(quantidadeCalculada);
         jpa.getTransaction().begin();
         jpa.merge(produto);
         jpa.getTransaction().commit();

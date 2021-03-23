@@ -33,15 +33,15 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author pedro
  */
-public class RelatorioFornecedor extends javax.swing.JFrame {
+public class ProdutoRelatorio extends javax.swing.JFrame {
 
     Factory fac = new Factory();
     EntityManager em = fac.retornaEntidadegerenciada();
-    private static RelatorioFornecedor PRF;
+    private static ProdutoRelatorio PRF;
 
-    public static RelatorioFornecedor getInstancia() {
+    public static ProdutoRelatorio getInstancia() {
         if (PRF == null) {
-            PRF = new RelatorioFornecedor();
+            PRF = new ProdutoRelatorio();
         }
         return PRF;
     }
@@ -53,7 +53,7 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
     /**
      * Creates new form PesquisaRapidaFornecedor
      */
-    public RelatorioFornecedor() {
+    public ProdutoRelatorio() {
         initComponents();
         setLocationRelativeTo(null);
         jtfPesquisaPorNomeForncedor.grabFocus();
@@ -62,6 +62,7 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
         jlbImgImp.setIcon(iconEmp);
         CardLayout card = (CardLayout) root.getLayout();
         card.show(root, "relatorio");
+        jTableFornecedor.setRowHeight(28);
     }
 
     /**
@@ -236,7 +237,7 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
         root.add(pesquisar, "pesquisar");
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel2.setText("Fornecedor do Produto:");
+        jLabel2.setText("Codigo do Fornecedor:");
 
         jtfCodigoFornecedor.setBackground(new java.awt.Color(153, 255, 255));
         jtfCodigoFornecedor.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
@@ -427,6 +428,8 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
                 Fornecedor f = em.find(Fornecedor.class, Integer.parseInt(jtfCodigoFornecedor.getText()));
                 jtpInfo.setText(f.getNome());
             } catch (NullPointerException e) {
+                jtpInfo.setText("");
+                
                  JOptionPane.showMessageDialog(null,"Fornecedor não encontado");
             }
         }
@@ -463,11 +466,11 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
 
             jv.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(RelatorioFornecedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RelatorioFornecedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JRException ex) {
-            Logger.getLogger(RelatorioFornecedor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
         catch(NumberFormatException e){
              JOptionPane.showMessageDialog(null,"nenhum parametro informado" );
@@ -478,6 +481,7 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
          
         
         jtfCodigoFornecedor.setText(jTableFornecedor.getValueAt(jTableFornecedor.getSelectedRow(),0).toString());
+        jtpInfo.setText(jTableFornecedor.getValueAt(jTableFornecedor.getSelectedRow(),1).toString());
          CardLayout card = (CardLayout) root.getLayout();
             card.show(root, "relatorio");
     }//GEN-LAST:event_jTableFornecedorMouseClicked
@@ -499,14 +503,18 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RelatorioFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutoRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RelatorioFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutoRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RelatorioFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutoRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RelatorioFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutoRelatorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -515,7 +523,7 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RelatorioFornecedor().setVisible(true);
+                new ProdutoRelatorio().setVisible(true);
             }
         });
     }

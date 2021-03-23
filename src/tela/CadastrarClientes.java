@@ -32,12 +32,20 @@ import modelos.Produto;
  *
  * @author pedro
  */
-public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
+public class CadastrarClientes extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public PAREIAQUICADASTROCLIENTE() {
+    private static CadastrarClientes cd;
+      public static CadastrarClientes getInstancia() {
+        if (cd == null) {
+
+            cd = new CadastrarClientes();
+        }
+        return cd;
+    }
+    public CadastrarClientes() {
         initComponents();
         setLocationRelativeTo(null);
         MaskFormatter cpf;
@@ -48,7 +56,7 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
             jRCpf.setSelected(true);
             jtfNomeCliente.grabFocus();
         } catch (ParseException ex) {
-            Logger.getLogger(PAREIAQUICADASTROCLIENTE.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         ImageIcon iconEmp = new ImageIcon("src/images/growthcode.png");
@@ -85,15 +93,13 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
         jbtPesquisar = new javax.swing.JButton();
         pesquisar = new javax.swing.JPanel();
         jbtVoltar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jSrcolpaneInterno = new javax.swing.JScrollPane();
-        jtableCliente = new javax.swing.JTable();
         jtfPesquisaPorCliente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jbtExcluir = new javax.swing.JButton();
+        jSrcolpaneInterno = new javax.swing.JScrollPane();
+        jtableCliente = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         root.setLayout(new java.awt.CardLayout());
@@ -228,8 +234,28 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jtfPesquisaPorCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jtfPesquisaPorCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfPesquisaPorClienteFocusGained(evt);
+            }
+        });
+        jtfPesquisaPorCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfPesquisaPorClienteKeyPressed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel1.setText("Pesquisa por nome do cliente:");
+
+        jbtExcluir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jbtExcluir.setText("Excluir");
+        jbtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtExcluirActionPerformed(evt);
+            }
+        });
 
         jSrcolpaneInterno.setBackground(new java.awt.Color(102, 102, 255));
         jSrcolpaneInterno.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -293,46 +319,6 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
             jtableCliente.getColumnModel().getColumn(3).setPreferredWidth(90);
         }
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jSrcolpaneInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 66, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jSrcolpaneInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jScrollPane1.setViewportView(jPanel1);
-
-        jtfPesquisaPorCliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jtfPesquisaPorCliente.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jtfPesquisaPorClienteFocusGained(evt);
-            }
-        });
-        jtfPesquisaPorCliente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtfPesquisaPorClienteKeyPressed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Pesquisa por nome do cliente:");
-
-        jbtExcluir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jbtExcluir.setText("Excluir");
-        jbtExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtExcluirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pesquisarLayout = new javax.swing.GroupLayout(pesquisar);
         pesquisar.setLayout(pesquisarLayout);
         pesquisarLayout.setHorizontalGroup(
@@ -343,12 +329,16 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(pesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jtfPesquisaPorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(pesquisarLayout.createSequentialGroup()
                             .addComponent(jbtExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jbtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(54, 54, 54))
+            .addGroup(pesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pesquisarLayout.createSequentialGroup()
+                    .addGap(74, 74, 74)
+                    .addComponent(jSrcolpaneInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(53, Short.MAX_VALUE)))
         );
         pesquisarLayout.setVerticalGroup(
             pesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,13 +347,16 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtfPesquisaPorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(320, 320, 320)
                 .addGroup(pesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtVoltar)
                     .addComponent(jbtExcluir))
                 .addGap(80, 80, 80))
+            .addGroup(pesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pesquisarLayout.createSequentialGroup()
+                    .addGap(131, 131, 131)
+                    .addComponent(jSrcolpaneInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(131, Short.MAX_VALUE)))
         );
 
         root.add(pesquisar, "editar");
@@ -388,7 +381,7 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
             jRCnpj.setSelected(false);
             jtfCpfCnpj.grabFocus();
         } catch (ParseException ex) {
-            Logger.getLogger(PAREIAQUICADASTROCLIENTE.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jRCpfActionPerformed
@@ -403,7 +396,7 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
             jtfCpfCnpj.grabFocus();
 
         } catch (ParseException ex) {
-            Logger.getLogger(PAREIAQUICADASTROCLIENTE.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jRCnpjActionPerformed
 
@@ -535,14 +528,30 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PAREIAQUICADASTROCLIENTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PAREIAQUICADASTROCLIENTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PAREIAQUICADASTROCLIENTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PAREIAQUICADASTROCLIENTE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -563,7 +572,7 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PAREIAQUICADASTROCLIENTE().setVisible(true);
+                new CadastrarClientes().setVisible(true);
             }
         });
     }
@@ -663,10 +672,8 @@ public class PAREIAQUICADASTROCLIENTE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRCnpj;
     private javax.swing.JRadioButton jRCpf;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jSrcolpaneInterno;
     private javax.swing.JButton jbtExcluir;
     private javax.swing.JButton jbtPesquisar;

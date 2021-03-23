@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="projeto" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="390ac289-ef9f-4d6e-965f-82d30a819a18">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#0088FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESCRICAOPRODUTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DESCRICAOPRODUTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DESCRICAOPRODUTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ESTOQUEPRODUTO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ESTOQUEPRODUTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="ESTOQUEPRODUTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRECOCUSTOPRODUTO" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="PRECOCUSTOPRODUTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRECOCUSTOPRODUTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRECOVENDAPRODUTO" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="PRECOVENDAPRODUTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRECOVENDAPRODUTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="127" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="200" height="31" uuid="39be618d-d419-460d-8860-e25492cf3bb5">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="20"/>
+				</textElement>
+				<text><![CDATA[<GrowthCode>]]></text>
+			</staticText>
+			<textField pattern="HH:mm">
+				<reportElement x="520" y="30" width="55" height="19" uuid="6b7eb801-0244-4145-b324-d8622d96de07"/>
+				<textElement>
+					<font fontName="Lucida Bright" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="350" height="19" uuid="2b642997-a257-4ec3-a809-73e28e319617"/>
+				<textElement>
+					<font fontName="Lucida Bright" size="12"/>
+				</textElement>
+				<text><![CDATA[Rua Odemiro José de souza - Q.9 - L.1 A - Santa Luzia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="350" height="20" uuid="fd0dbd4d-028c-4dae-8899-6e38866ad7d5"/>
+				<textElement>
+					<font fontName="Lucida Bright" size="12"/>
+				</textElement>
+				<text><![CDATA[Iaciara-Go - CEP 7392920-000  Telefone: (62) 997017694]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="410" y="30" width="110" height="19" uuid="805ba286-ac79-46bb-92bb-ef8b01d70964"/>
+				<textElement>
+					<font fontName="Lucida Bright" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="72" width="560" height="18" uuid="58ad1a34-cf01-4aa6-b338-9c3a08781ac2"/>
+				<text><![CDATA[------------------------------------------------------------------------------------------------------------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="30" width="70" height="19" uuid="18b361d6-2f1c-4117-8180-1e546d47d438"/>
+				<textElement>
+					<font fontName="Lucida Bright" size="12"/>
+				</textElement>
+				<text><![CDATA[Data/Hora:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="230" height="20" uuid="bcd9ae59-6c18-451e-ad5f-08d0965ed929"/>
+				<textElement>
+					<font fontName="Lucida Bright" size="12"/>
+				</textElement>
+				<text><![CDATA[Relatorio de produtos por fornecedor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="107" width="560" height="20" uuid="bcbee94c-8217-4eed-a3dc-1606208333cd"/>
+				<text><![CDATA[------------------------------------------------------------------------------------------------------------------------------------------------------------------------]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="50" height="20" uuid="2fa7ae68-9ae1-4712-9af5-be03720ce087">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b5ea8cd2-93cc-4df7-b66a-d0e07a2f56d5"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="2" width="170" height="20" uuid="c5a0ee19-6be8-4ab9-8624-8fbf3023b66a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="52045fab-048f-45e7-af18-e724bac00fbd"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Descrição do Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="2" width="100" height="20" uuid="14a523a2-8a90-4c59-bb60-163e6663bffc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7d7377c0-d44c-4ed8-9b2a-04184fa6f6d0"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Preço de Custo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="1" width="95" height="20" uuid="9d4f9536-a847-4421-9bab-c78e1945bd87">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="321735fe-3cea-490d-a899-b3ce6d242e39"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Preço de Venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="2" width="60" height="19" uuid="068d459f-f3d2-413d-b565-29d646144548">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="45829b16-f6be-47f6-8f7e-056bf58938f8"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Estoques]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="60" y="0" width="160" height="20" uuid="2ace871f-68b5-4b9d-bfc1-cce877473260">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="99967e73-8ace-434f-8cdc-c9251445655b"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRICAOPRODUTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="2" width="45" height="18" uuid="154aa117-5551-4a82-8be0-5a2461190a72">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="06f02dcd-bba3-4383-806a-c0b757aeb374"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="18" width="560" height="14" uuid="6ae1c18e-8fdc-4c2d-ba83-b61f73bdbcd8"/>
+				<text><![CDATA[------------------------------------------------------------------------------------------------------------------------------------------------------------------------]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="530" y="10" width="20" height="18" uuid="8b938e73-b080-4290-a69c-27108453760d"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

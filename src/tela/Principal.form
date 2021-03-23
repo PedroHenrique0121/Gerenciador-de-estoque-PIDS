@@ -126,7 +126,7 @@
                     <Component class="javax.swing.JTree" name="jTree2">
                       <Properties>
                         <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                          <TreeModel code="Opera&#xe7;&#xf5;es do Sistema &#xa;  Cadastros&#xa;    Clientes&#xa;    Fornecedor(Em desenvolvimento)&#xa;    Produtos&#xa;    Usuarios&#xa; Gera&#xe7;ao de Pedidos&#xa;    Pedidos/Or&#xe7;amentos&#xa; Relatorios&#xa;    Vendas&#xa;       Fechamento de caixa&#xa;       Busca por vendas/pedidos&#xa;    Produtos&#xa;    Fornecedor&#xa;    Clientes&#xa;    Usuarios&#xa; Vendas&#xa;   PDV  "/>
+                          <TreeModel code="Opera&#xe7;&#xf5;es do Sistema &#xa;  Cadastros&#xa;    Clientes&#xa;    Fornecedor&#xa;    Produtos&#xa;    Usuarios&#xa;    Pagamentos&#xa; Gera&#xe7;ao de Pedidos&#xa;    Pedidos/Or&#xe7;amentos&#xa; Relatorios&#xa;    Vendas/Pedidos&#xa;       Fechamento de caixa&#xa;       Busca por vendas/pedidos&#xa;    Relatorio Produtos&#xa; Vendas&#xa;   PDV  "/>
                         </Property>
                       </Properties>
                       <Events>

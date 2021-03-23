@@ -172,6 +172,7 @@ public class VendasFrame extends javax.swing.JFrame {
         jtmSelecionarCliente = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jtfAreaDeVendaProdutoCodigo1.setBackground(new java.awt.Color(255, 255, 102));
         jtfAreaDeVendaProdutoCodigo1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
@@ -447,17 +448,17 @@ public class VendasFrame extends javax.swing.JFrame {
                 .add(60, 60, 60)
                 .add(jLabel26))
             .add(jPanel1Layout.createSequentialGroup()
-                .add(40, 40, 40)
-                .add(jtfCodigoProduto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 280, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-            .add(jPanel1Layout.createSequentialGroup()
                 .add(60, 60, 60)
                 .add(jLabel25))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .add(root, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
             .add(jPanel1Layout.createSequentialGroup()
-                .add(40, 40, 40)
+                .add(31, 31, 31)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jtfCodigoProduto, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 289, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jtfDescritivoProduto1)
                         .add(50, 50, 50))
@@ -546,7 +547,7 @@ public class VendasFrame extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jtfValorTotal1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(19, 19, 19)
-                        .add(jlbDesconto, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                        .add(jlbDesconto, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(lblImagemLogo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 170, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(29, 29, 29))
@@ -764,6 +765,14 @@ public class VendasFrame extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem3.setText("Fechamento de Caixa");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -824,13 +833,13 @@ public class VendasFrame extends javax.swing.JFrame {
             qtd = Integer.parseInt(jtfQuantidadeAVender1.getText());
 
             produtosTabela.add(produto);
-            double valorVendaVezesquantidade = produto.getPreco_venda_produto() * qtd;
+            double valorVendaVezesquantidade = produto.getPrecoVendaProduto() * qtd;
             modeloTabela.addRow(new Object[]{
                 false,
-                produto.getDescricao_produto(),
+                produto.getDescricaoProduto(),
                 qtd,
                 "und",
-                String.valueOf( produto.getPreco_venda_produto()).format("%.2f",  produto.getPreco_venda_produto()),
+                String.valueOf( produto.getPrecoVendaProduto()).format("%.2f",  produto.getPrecoVendaProduto()),
                 String.valueOf(valorVendaVezesquantidade).format("%.2f", valorVendaVezesquantidade)
             });
         } catch (NullPointerException e) {
@@ -850,7 +859,14 @@ public class VendasFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_itmAdicionarItemActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-        // TODO add your handling code here:
+        try {
+            JasperPrint jp = JasperFillManager.fillReport("src/relatorio/r/projeto_1.jasper",null, con);
+            JasperViewer jv = new JasperViewer(jp, false);
+
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(VendasFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void itmFinalizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmFinalizarVendaActionPerformed
@@ -885,8 +901,8 @@ public class VendasFrame extends javax.swing.JFrame {
 
             try {
                 produto = jpa.find(Produto.class, Integer.parseInt(jtfAreaDeVendaProdutoCodigo1.getText()));
-                jtfValorDeVenda1.setText(produto.getPreco_venda_produto() + "");
-                jtfDescritivoProduto1.setText(produto.getDescricao_produto());
+                jtfValorDeVenda1.setText(produto.getPrecoVendaProduto() + "");
+                jtfDescritivoProduto1.setText(produto.getDescricaoProduto());
                 int qtd = 0;
                 if (jtfQuantidadeAVender1.getText().equals("")) {
                     jtfQuantidadeAVender1.setText(1 + "");
@@ -1017,13 +1033,13 @@ public class VendasFrame extends javax.swing.JFrame {
 
             try {
                 produto = jpa.find(Produto.class, Integer.parseInt(jtfCodigoProduto.getText()));
-                jtfValorDeVenda1.setText(String.valueOf(produto.getPreco_venda_produto()).format("%.2f", produto.getPreco_venda_produto()));
-                jtfDescritivoProduto1.setText(produto.getDescricao_produto());
+                jtfValorDeVenda1.setText(String.valueOf(produto.getPrecoVendaProduto()).format("%.2f", produto.getPrecoVendaProduto()));
+                jtfDescritivoProduto1.setText(produto.getDescricaoProduto());
                 int qtd = 0;
                 if (jtfQuantidadeAVender1.getText().equals("")) {
                     jtfQuantidadeAVender1.setText(1 + "");
 
-                    jtfValorDeQuantidadeVezesValorDeVenda.setText(String.valueOf(produto.getPreco_venda_produto()).format("%.2f", produto.getPreco_venda_produto()));
+                    jtfValorDeQuantidadeVezesValorDeVenda.setText(String.valueOf(produto.getPrecoVendaProduto()).format("%.2f", produto.getPrecoVendaProduto()));
                 } else {
                     //jtfQuantidadeAVender1.setText(jtfQuantidadeAVender1.getText().format("%.2f", jtf) + "");
                     int quantidade = 0;
@@ -1037,7 +1053,7 @@ public class VendasFrame extends javax.swing.JFrame {
                     if (quantidade <= 0) {
                         JOptionPane.showMessageDialog(null, "O Campo de <quantidade> so pode recber numeros Inteiros maiores ou igual a 1", "alerta", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        Double valor = quantidade * produto.getPreco_venda_produto();
+                        Double valor = quantidade * produto.getPrecoVendaProduto();
                         jtfValorDeQuantidadeVezesValorDeVenda.setText(String.valueOf(valor).format("%.2f", valor));
                     }
 
@@ -1077,7 +1093,7 @@ public class VendasFrame extends javax.swing.JFrame {
             if (quantidade <= 0) {
                 JOptionPane.showMessageDialog(null, "O Campo de <quantidade> so pode recber numeros Inteiros maiores ou igual a 1", "alerta", JOptionPane.WARNING_MESSAGE);
             } else {
-                Double valor = quantidade * produto.getPreco_venda_produto();
+                Double valor = quantidade * produto.getPrecoVendaProduto();
                 jtfValorDeQuantidadeVezesValorDeVenda.setText(String.valueOf(valor).format("%.2f", valor));
             }
 
@@ -1113,6 +1129,24 @@ public class VendasFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jtfDescontoKeyPressed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+            String data = sdf.format(new Date());
+            HashMap params = new HashMap<>();
+            params.put("data", data);
+
+            JasperPrint jp = JasperFillManager.fillReport("src/relatorio/r/fechamento.jasper", params, con);
+            JasperViewer jv = new JasperViewer(jp, false);
+
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(VendasFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
     public void FinalizarEtapaVenda() throws JRException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Pedido pedido = new Pedido();
@@ -1120,8 +1154,9 @@ public class VendasFrame extends javax.swing.JFrame {
             pedido.setValor_total_pedido(Double.parseDouble(jtfValorTotal1.getText().replaceAll(",", ".")));
             pedido.setPagamento(pagamento);
             pedido.setData(new Date());
-            if (clientep == null) {
+            if (clientep== null) {
                 clientep = jpa.find(Cliente.class, 1);
+                System.out.println("e");
             }
              
             pedido.setDesconto(descontoStatico);
@@ -1138,7 +1173,7 @@ public class VendasFrame extends javax.swing.JFrame {
             PedidoProduto pedidoProduto = new PedidoProduto();
 
             criarPedidoProduto(pedido, pedidoProduto);
-
+            
             //  JasperReport relatorio = (JasperReport)JRLoader.loadObjectFromFile("C:\\Users\\pedro\\JaspersoftWorkspace\\MyReports\\projeto.jasper");
             //JasperReport r = JasperCompileManager.compileReport( relat 
             HashMap params = new HashMap<>();
@@ -1149,6 +1184,7 @@ public class VendasFrame extends javax.swing.JFrame {
 
             jv.setVisible(true);
             descontoStatico=0;
+           
         }
     }
 
@@ -1268,8 +1304,8 @@ public class VendasFrame extends javax.swing.JFrame {
             pedidoProduto.setProduto(produtosTabela.get(i));
             pedidoProduto.setQuantidade_pedido_produto(Integer.parseInt(JtableVenda1.getValueAt(i, 2).toString()));
             
-            pedidoProduto.setTotalPedidoProduto(pedidoProduto.getProduto().getPreco_venda_produto()*pedidoProduto.getQuantidade_pedido_produto());
-            atualizarestoque(produtosTabela.get(i).getId_produto(), pedidoProduto.getQuantidade_pedido_produto(), jpa);
+            pedidoProduto.setTotalPedidoProduto(pedidoProduto.getProduto().getPrecoVendaProduto()*pedidoProduto.getQuantidade_pedido_produto());
+            atualizarestoque(produtosTabela.get(i).getId(), pedidoProduto.getQuantidade_pedido_produto(), jpa);
             jpa.getTransaction().begin();
             jpa.persist(pedidoProduto);
             jpa.getTransaction().commit();
@@ -1284,6 +1320,9 @@ public class VendasFrame extends javax.swing.JFrame {
         }
 
         clientep = null;
+        jtfCpfCliente.setText("");
+        jlbDesconto.setText("");
+        jtfDesconto.setText("");
         somarValoTotal();
 
         CardLayout card = (CardLayout) painelAreaTrablaho.getLayout();
@@ -1340,6 +1379,7 @@ public class VendasFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
